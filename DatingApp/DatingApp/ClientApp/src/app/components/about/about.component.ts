@@ -1,8 +1,3 @@
-
-
-
-
-
 import { Component } from '@angular/core';
 import { fadeInOut } from '../../services/animations';
 

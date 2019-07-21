@@ -56,11 +56,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-
   getShouldRedirect() {
     return !this.isModal && this.authService.isLoggedIn && !this.authService.isSessionExpired;
   }
-
 
   showErrorAlert(caption: string, message: string) {
     this.alertService.showMessage(caption, message, MessageSeverity.error);
@@ -72,11 +70,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-
   login() {
     this.isLoading = true;
     this.alertService.startLoadingMessage('', 'Attempting login...');
-
     this.authService.login(this.userLogin.userName, this.userLogin.password, this.userLogin.rememberMe)
       .subscribe(
         user => {
@@ -91,11 +87,11 @@ export class LoginComponent implements OnInit, OnDestroy {
               this.alertService.showMessage('Login', `Session for ${user.userName} restored!`, MessageSeverity.success);
               setTimeout(() => {
                 this.alertService.showStickyMessage('Session Restored', 'Please try your last operation again', MessageSeverity.default);
-              }, 500);
+              }, 10);
 
               this.closeModal();
             }
-          }, 500);
+          }, 10);
         },
         error => {
 
@@ -116,7 +112,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
           setTimeout(() => {
             this.isLoading = false;
-          }, 500);
+          }, 10);
         });
   }
 
