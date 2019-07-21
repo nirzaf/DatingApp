@@ -1,7 +1,7 @@
-// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
+
+
+
+
 
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';

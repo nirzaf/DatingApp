@@ -1,15 +1,4 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAL.Core
+﻿namespace DAL.Core
 {
     public static class ClaimConstants
     {
@@ -24,7 +13,6 @@ namespace DAL.Core
 
     public static class PropertyConstants
     {
-
         ///<summary>A property that specifies the full name of an entity</summary>
         public const string FullName = "fullname";
 

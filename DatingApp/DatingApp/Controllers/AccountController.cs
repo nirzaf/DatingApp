@@ -1,7 +1,7 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
+﻿
+
+
+
 
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using DatingApp.ViewModels;
 using AutoMapper;
 using DAL.Models;
@@ -84,7 +83,7 @@ namespace DatingApp.Controllers
 
 
         [HttpGet("users")]
-        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
+        [Authorize(Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(200, Type = typeof(List<UserViewModel>))]
         public async Task<IActionResult> GetUsers()
         {
@@ -93,7 +92,7 @@ namespace DatingApp.Controllers
 
 
         [HttpGet("users/{pageNumber:int}/{pageSize:int}")]
-        [Authorize(Authorization.Policies.ViewAllUsersPolicy)]
+        [Authorize(Policies.ViewAllUsersPolicy)]
         [ProducesResponseType(200, Type = typeof(List<UserViewModel>))]
         public async Task<IActionResult> GetUsers(int pageNumber, int pageSize)
         {
@@ -198,7 +197,6 @@ namespace DatingApp.Controllers
             return BadRequest(ModelState);
         }
 
-
         [HttpPatch("users/me")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -206,7 +204,6 @@ namespace DatingApp.Controllers
         {
             return await UpdateUser(Utilities.GetUserId(this.User), patch);
         }
-
 
         [HttpPatch("users/{id}")]
         [ProducesResponseType(204)]
@@ -234,7 +231,6 @@ namespace DatingApp.Controllers
                 UserPatchViewModel userPVM = Mapper.Map<UserPatchViewModel>(appUser);
                 patch.ApplyTo(userPVM, ModelState);
 
-
                 if (ModelState.IsValid)
                 {
                     Mapper.Map<UserPatchViewModel, ApplicationUser>(userPVM, appUser);
@@ -242,7 +238,6 @@ namespace DatingApp.Controllers
                     var result = await _accountManager.UpdateUserAsync(appUser);
                     if (result.Succeeded)
                         return NoContent();
-
 
                     AddError(result.Errors);
                 }
@@ -295,7 +290,6 @@ namespace DatingApp.Controllers
             if (!(await _authorizationService.AuthorizeAsync(this.User, id, AccountManagementOperations.Delete)).Succeeded)
                 return new ChallengeResult();
 
-
             ApplicationUser appUser = await _accountManager.GetUserByIdAsync(id);
 
             if (appUser == null)
@@ -303,7 +297,6 @@ namespace DatingApp.Controllers
 
             if (!await _accountManager.TestCanDeleteUserAsync(id))
                 return BadRequest("User cannot be deleted. Delete all orders associated with this user and try again");
-
 
             UserViewModel userVM = await GetUserViewModelHelper(appUser.Id);
 

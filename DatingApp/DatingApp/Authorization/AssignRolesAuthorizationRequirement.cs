@@ -1,11 +1,10 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
+﻿
+
+
+
 
 using DAL.Core;
 using Microsoft.AspNetCore.Authorization;
-using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -64,7 +63,6 @@ namespace DatingApp.Authorization
 
             if (currentRoles == null)
                 currentRoles = new string[] { };
-
 
             var addedRoles = newRoles.Except(currentRoles);
 

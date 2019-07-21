@@ -1,14 +1,10 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
+﻿
+
+
+
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Models
 {
@@ -25,7 +21,6 @@ namespace DAL.Models
         public bool IsDiscontinued { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
-
 
         public int? ParentId { get; set; }
         public Product Parent { get; set; }

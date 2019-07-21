@@ -1,11 +1,4 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using DAL.Models.Interfaces;
 

@@ -1,15 +1,8 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using DAL.Models;
+﻿using DAL.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using DAL.Models.Interfaces;
@@ -25,11 +18,8 @@ namespace DAL
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
-
-
         public ApplicationDbContext(DbContextOptions options) : base(options)
         { }
-
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -71,15 +61,11 @@ namespace DAL
             builder.Entity<OrderDetail>().Property(p => p.Discount).HasColumnType(priceDecimalType);
         }
 
-
-
-
         public override int SaveChanges()
         {
             UpdateAuditEntities();
             return base.SaveChanges();
         }
-
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
@@ -87,20 +73,17 @@ namespace DAL
             return base.SaveChanges(acceptAllChangesOnSuccess);
         }
 
-
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             UpdateAuditEntities();
             return base.SaveChangesAsync(cancellationToken);
         }
 
-
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
         {
             UpdateAuditEntities();
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
-
 
         private void UpdateAuditEntities()
         {

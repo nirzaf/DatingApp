@@ -1,7 +1,7 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
+﻿
+
+
+
 
 using DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -9,8 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
@@ -46,8 +44,6 @@ namespace DAL.Repositories
             _entities.UpdateRange(entities);
         }
 
-
-
         public virtual void Remove(TEntity entity)
         {
             _entities.Remove(entity);
@@ -58,12 +54,10 @@ namespace DAL.Repositories
             _entities.RemoveRange(entities);
         }
 
-
         public virtual int Count()
         {
             return _entities.Count();
         }
-
 
         public virtual IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
